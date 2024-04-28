@@ -24,6 +24,7 @@
 **Table of Contents**
 
 [if Expressions](/src/main.rs)
+[Loops](/src/loops/loops.rs)
 
 #
 
