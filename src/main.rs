@@ -33,7 +33,7 @@ fn example3() {
 }
 
 /*
-*   When this program executes, it checks each if expression in turn and executes
+*   When the above program executes, it checks each if expression in turn and executes
 *   the first body for which the condition evaluates to true. Note that even though
 *   6 is divisible by 2, we don’t see the output number is divisible by 2, nor do we
 *   see the number is not divisible by 4, 3, or 2 text from the else block.
