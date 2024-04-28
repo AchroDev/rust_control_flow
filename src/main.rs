@@ -4,6 +4,8 @@
 *   this block of code. If the condition is not met, do not run this block of code.”
 */
 
+//It’s also worth noting that the condition in this code must be a bool. If the condition isn’t a bool, we’ll get an error.
+
 fn main() {
     let number = 7;
 
