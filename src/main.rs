@@ -4,7 +4,15 @@
 *   this block of code. If the condition is not met, do not run this block of code.”
 */
 
-//It’s also worth noting that the condition in this code must be a bool. If the condition isn’t a bool, we’ll get an error.
+//It’s also worth noting that the condition in an if expression must be a bool. If the condition isn’t a bool, we’ll get an error.
+
+fn example2() {
+    let number = 3;
+
+    if number != 0 {
+        println!("number was something other than zero");
+    }
+}
 
 fn main() {
     let number = 7;
@@ -14,4 +22,6 @@ fn main() {
     } else {
         println! {"condition was false"};
     }
+
+    example2();
 }
