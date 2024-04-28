@@ -61,6 +61,21 @@ fn example_four() {
 *   of the if must be the same type
 */
 
+fn example_five() {
+    let cond = true;
+    let x = if cond { 1 } else { 2 }; // Concise way of representing the same behavior below
+
+    let y;
+
+    if cond {
+        y = 1;
+    } else {
+        y = 2;
+    }
+
+    println!("These are the same, so {x} is equal to {y}");
+}
+
 // Entry point
 fn main() {
     let number = 7;
@@ -74,4 +89,5 @@ fn main() {
     example_two();
     example_three();
     example_four();
+    example_five();
 }
