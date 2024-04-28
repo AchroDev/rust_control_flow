@@ -17,7 +17,7 @@ fn loop_one() {
 }
 
 /*
-*   When we run this program, we’ll see again! printed over and over continuously until
+*   When we run loop_one, we’ll see again! printed over and over continuously until
 *   we stop the program manually. Most terminals support the keyboard shortcut ctrl-c to
 *   interrupt a program that is stuck in a continual loop.
 */
@@ -25,7 +25,22 @@ fn loop_one() {
 // Fortunately, Rust also provides a way to break out of a loop using code.
 // You can place the break keyword within the loop to tell the program when to stop executing the loop.
 
+fn loop_two() {
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {result}");
+}
+
 // Entry point
 fn main() {
     loop_one();
+    loop_two();
 }
