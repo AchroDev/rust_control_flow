@@ -6,7 +6,7 @@
 
 //It’s also worth noting that the condition in an if expression must be a bool. If the condition isn’t a bool, we’ll get an error.
 
-fn example2() {
+fn example_two() {
     let number = 3;
 
     if number != 0 {
@@ -18,7 +18,7 @@ fn example2() {
 *   Handling Multiple Conditions with "else if"
 */
 
-fn example3() {
+fn example_three() {
     let number = 6;
 
     if number % 4 == 0 {
@@ -41,6 +41,26 @@ fn example3() {
 *   and once it finds one, it doesn’t even check the rest.
 */
 
+/*
+*   Using if in a let statement
+*/
+
+// Because if is an expression, we can use it on the right side of a let statement to assign the outcome to a variable
+fn example_four() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+}
+
+/*
+*   Remember that blocks of code evaluate to the last expression in them,
+*   and numbers by themselves are also expressions. In this case, the value
+*   of the whole if expression depends on which block of code executes.
+*   This means the values that have the potential to be results from each arm
+*   of the if must be the same type
+*/
+
 // Entry point
 fn main() {
     let number = 7;
@@ -51,6 +71,7 @@ fn main() {
         println! {"condition was false"};
     }
 
-    example2();
-    example3();
+    example_two();
+    example_three();
+    example_four();
 }
