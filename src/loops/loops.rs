@@ -113,7 +113,7 @@ fn loop_three() {
 *   stopping the loop. It's possible to implement the behaviour like this using a combination of
 *   'loop', 'if', 'else, and 'break'; you could try that now in a program, if you'd like.
 *   However, this pattern is so common that Rust has a built-in language construct for it,
-*   called a 'while' loop. In Listing 3-3, we use 'while' to loop the program three times,
+*   called a 'while' loop. In loop_four, we use 'while' to loop the program three times,
 *   counting down each time, and then, after the loop, print a message and exit.
 */
 
@@ -135,10 +135,88 @@ fn loop_four() {
 *   to 'true', the code runs; otherwise, it exits the loop.
 */
 
+/*
+    Looping Through a Collection with for
+*/
+
+/*
+*   You can choose to use the 'while' construct to loop over the elements of a collection,
+*   such as an array. For example, the loop in loop_five prints each element in the array a.
+*/
+
+fn loop_five() {
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("the value is: {}", a[index]);
+
+        index += 1;
+    }
+}
+
+/*
+*   Here, the code counts up through the elements in the array. It starts at index 0,
+*   and then loops until it reaches the final index in the array(that is, when 'index < 5)
+*   is no longer 'true'). Running this code will print every element in the array.
+*/
+
+/*
+*   All five array values appear in the terminal, as expected. Even though 'index' will
+*   reach a value of '5' at some point, the loop stops executing before trying to fetch
+*   a sixth value from the array.
+*
+*   However, this approach is error prone; we could cause the program to panic if the
+*   index value or test condition is incorrect. For example, if you changed the definition
+*   of the 'a' array to have four elements but forgot to update the condition to
+*   'while index < 4', the code would panic. It's also slow, because the compiler adds runtime
+*   code to perform the conditional check of whether the index is within bounds of the array
+*   on every iteration through the loop.
+*
+*   As a more concise alternative, you can use a 'for' loop and execute some code for each
+*   item in a colletion. A 'for' loop looks like the code in loop_six."
+*/
+
+fn loop_six() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+
+/*
+*   When we run this code, we'll see the same output as in loop_five. More importantly,
+*   we've now increased the safety of the code and elminated the chance of bugs that might
+*   result from going beyond the end of the array or not going far enough and missing some items.
+
+*   Using the 'for' loop, you wouldn't need to remember to change any other code if you changed
+*   the number of values in the array, as you would with the method used in loop_five.
+
+*   The safety and conciseness of 'for' loops make them the most commonly used loop construct
+*   in Rust. Even in situations in which you want to run some code a certain number of times, as in
+*   the countdown example that used a 'while' loop in loop_four, most Rustaceans would use a 'for' loop.
+*   The way to do that would be to use a 'Range', provided by the standard library, which
+*   generates all number in sequence starting from one number and ending before another number.
+
+*   Here's what the countdown would look like using a 'for' loop and another method we've not
+*   yet talked about, 'rev', to reverse the range:
+*/
+
+fn loop_seven() {
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    println!("LIFTOFF!!!");
+}
+
 // Entry point
 fn main() {
     loop_one();
     loop_two();
     loop_three();
     loop_four();
+    loop_five();
+    loop_six();
+    loop_seven();
 }
