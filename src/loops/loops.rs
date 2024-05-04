@@ -39,6 +39,8 @@ fn loop_one() {
 fn loop_two() {
     let mut counter = 0;
 
+    let this = ();
+
     let result = loop {
         counter += 1;
 
@@ -59,8 +61,42 @@ fn loop_two() {
 *   assigns the value to result. Finally, we print the value in result, which in this case is 20.
 */
 
+/*
+    Loop Labels to Diambiguate Between Multiple Loops
+*/
+
+/*
+*   If you have loops within loops, 'break' and 'continue' apply to the innermost loop
+*   at that point. You can optionally specify a 'loop label' on a loop that you can then
+*   use with 'break' or 'continue' to specify that those keywords apply to the nested
+*   labeled loop instead of the innermost loop. Loop labels must begin with a signle quote.
+*/
+
+fn loop_three() {
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {count}");
+}
+
 // Entry point
 fn main() {
     loop_one();
     loop_two();
+    loop_three();
 }
