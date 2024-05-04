@@ -39,14 +39,16 @@ fn loop_one() {
 fn loop_two() {
     let mut counter = 0;
 
-    let this = ();
-
     let result = loop {
         counter += 1;
 
         if counter == 10 {
-            break counter * 2; // Note: the semicolon here is technically optional
+            break counter * 2; // NOTE: the semicolon here is technically optional
         }
+        /*
+         *   Code after a break or return is never executed, so the Rust compiler treats
+         *   a break expression and a return expression as having the value unit, or ().
+         */
     };
 
     println!("The result is {result}");
@@ -101,9 +103,42 @@ fn loop_three() {
 *   will exit the outer loop.
 */
 
+/*
+    Conditional Loops with While
+*/
+
+/*
+*   A program will often need to evaluate a condition within a loop. While the condition
+*   is 'true', the loop runs. When the condition ceases to be 'true', the program calls 'break',
+*   stopping the loop. It's possible to implement the behaviour like this using a combination of
+*   'loop', 'if', 'else, and 'break'; you could try that now in a program, if you'd like.
+*   However, this pattern is so common that Rust has a built-in language construct for it,
+*   called a 'while' loop. In Listing 3-3, we use 'while' to loop the program three times,
+*   counting down each time, and then, after the loop, print a message and exit.
+*/
+
+fn loop_four() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+
+/*
+*   This construct eliminates a lot of nesting that would be necessary if you used
+*   'loop', 'if', 'else', and 'break', and it's clearer. While a condition evaluates
+*   to 'true', the code runs; otherwise, it exits the loop.
+*/
+
 // Entry point
 fn main() {
     loop_one();
     loop_two();
     loop_three();
+    loop_four();
 }
