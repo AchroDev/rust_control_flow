@@ -94,6 +94,13 @@ fn loop_three() {
     println!("End count = {count}");
 }
 
+/*
+*   The outer loop has the label 'counting_up, and it will count up from 0 to 2.
+*   The inner loop without a label counts down from 10 to 9. The first break that
+*   doesn’t specify a label will exit the inner loop only. The break 'counting_up; statement
+*   will exit the outer loop.
+*/
+
 // Entry point
 fn main() {
     loop_one();
